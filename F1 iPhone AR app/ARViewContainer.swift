@@ -15,6 +15,8 @@ struct ARViewContainer: UIViewRepresentable {
         return LapDataModel.shared.arView
     }
     
+    
+    
     func updateUIView(_ uiView: ARView, context: Context) {}
 }
 
@@ -27,7 +29,7 @@ extension ARView: ARCoachingOverlayViewDelegate {
         #endif
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         coachingOverlay.goal = .horizontalPlane
-        self.debugOptions = [.showFeaturePoints, .showAnchorOrigins, .showAnchorGeometry]
+//        self.debugOptions = [.showFeaturePoints, .showAnchorOrigins, .showAnchorGeometry]
 
         self.addSubview(coachingOverlay)
     }

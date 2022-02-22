@@ -10,6 +10,7 @@ import Combine
 import RealityKit
 import SwiftUI
 import ARKit
+import FocusEntity
 
 final class LapDataModel: ObservableObject {
     
@@ -30,9 +31,16 @@ final class LapDataModel: ObservableObject {
     
     private var sceneEventsUpdateSubscription: Cancellable!
     private var carAnchor: AnchorEntity?
-    
+    private var focusEntity: FocusEntity?
+
     private var cancellable = Set<AnyCancellable>()
-        
+    
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+         guard let view = self.arView else { return }
+         debugPrint("Anchors added to the scene: ", anchors)
+         self.focusEntity = FocusEntity(on: view, style: .classic(color: .yellow))
+     }
+    
     init () {
         // load the fastest lap
         //loadFastestLap()
@@ -43,10 +51,9 @@ final class LapDataModel: ObservableObject {
         #if !targetEnvironment(simulator) && !os(macOS)
         arView.addCoaching()
         #endif
-        
+
         // • The reference track, positioned in Reality Composer to match the API coordinated
         let carScene = try! COTA.loadTrack()
-                        
         // Hidding the reference track
         let myTrack = carScene.track3!
         myTrack.isEnabled = false
@@ -55,26 +62,32 @@ final class LapDataModel: ObservableObject {
         let myTrackTransformed = try! Entity.load(named: "1960Final")
         
         let trackAnchor = AnchorEntity(world: .zero)
+        trackAnchor.name = "track3"
         trackAnchor.addChild(myTrackTransformed)
         
         myTrackTransformed.orientation = simd_quatf(angle: .pi/4, axis: [0,1,0])
-                
+        
+        
         arView.scene.addAnchor(trackAnchor)
         arView.scene.addAnchor(carScene)
 
+        trackAnchor.isEnabled = false
         // • The camera
         #if os(macOS)
         let cameraEntity = PerspectiveCamera()
         cameraEntity.camera.fieldOfViewInDegrees = 60
         let cameraAnchor = AnchorEntity(world: .zero)
-
+        cameraAnchor.name = "camera"
         cameraAnchor.addChild(cameraEntity)
         arView.scene.addAnchor(cameraAnchor)
         #endif
-
+        
         // • The car
         let myCar = carScene.car!
-
+        myCar.name = "car"
+        
+        
+        
         print(myCar)
         myCar.transform.scale = [1, 1, 1] * 0.00001
         myCar.orientation = simd_quatf(angle: .pi/2, axis: [0,1,0])
@@ -97,7 +110,14 @@ final class LapDataModel: ObservableObject {
             self.currentGear = cp.mGear
             self.currentSector = cp.mSector
             self.currentLap = cp.mCurrentLap
-                        
+//            
+//            let box = MeshResource.generateBox(size: 0.05, cornerRadius: 0.005)
+//            let material = SimpleMaterial(color: .blue, isMetallic: true)
+//            let spot = AnchorEntity(world: .zero)
+//            spot.addChild(ModelEntity(mesh: box, materials: [material]))
+//            spot.position = myCar.position
+//            self.arView.scene.addAnchor(spot)
+//            
             myCar.position = SIMD3<Float>([cp.mWorldposy, cp.mWorldposz, cp.mWorldposx]/1960)
             myCar.transform.rotation = Transform(pitch: cp.mPitch, yaw: cp.mYaw, roll: cp.mRoll).rotation
             myCar.transform = myTrackTransformed.convert(transform: myCar.transform, to: myTrack)
@@ -119,7 +139,20 @@ final class LapDataModel: ObservableObject {
         let results = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .horizontal)
         
         if let firstResult = results.first {
-           print("TAPPED!")
+            print(firstResult)
+            
+            for anchor in arView.scene.anchors{
+                print(anchor.isEnabled)
+                print(anchor.name)
+            }
+//            print(arView.scene.anchors
+            let carEntity = arView.scene.findEntity(named: "car")
+            let trackEntity = arView.scene.findEntity(named: "track3")
+            
+            carEntity?.isEnabled = true
+            trackEntity?.isEnabled = true
+
+            
         } else {
             print("No Horizontal Plane Found!")
         }

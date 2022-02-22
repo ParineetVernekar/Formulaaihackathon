@@ -32,10 +32,18 @@
 		02FDCA4F26DF8822002E6C28 /* LapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FDCA4E26DF8822002E6C28 /* LapDataModel.swift */; };
 		02FDDC6C2719A9E800E3587F /* 1960Final.usdc in Resources */ = {isa = PBXBuildFile; fileRef = 02FDDC6B2719A9E800E3587F /* 1960Final.usdc */; };
 		02FDDC6D2719A9E800E3587F /* 1960Final.usdc in Resources */ = {isa = PBXBuildFile; fileRef = 02FDDC6B2719A9E800E3587F /* 1960Final.usdc */; };
-		854BEB8727C12A9600BA8DD3 /* Formula1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 854BEB8627C12A9600BA8DD3 /* Formula1.usdz */; };
-		854BEB8827C12A9600BA8DD3 /* Formula1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 854BEB8627C12A9600BA8DD3 /* Formula1.usdz */; };
-		854BEB8A27C12CDE00BA8DD3 /* F12022Car.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 854BEB8927C12CDE00BA8DD3 /* F12022Car.rcproject */; };
-		854BEB8B27C12CDE00BA8DD3 /* F12022Car.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 854BEB8927C12CDE00BA8DD3 /* F12022Car.rcproject */; };
+		85750F1327C518D300CC6162 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 85750F1227C518D300CC6162 /* FocusEntity */; };
+		85750F1627C519DB00CC6162 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 85750F1527C519DB00CC6162 /* FocusEntity */; };
+		85750F1827C549C900CC6162 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1727C549C900CC6162 /* CarModel.swift */; };
+		85750F1927C549C900CC6162 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1727C549C900CC6162 /* CarModel.swift */; };
+		85750F1B27C5536000CC6162 /* SingleCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1A27C5536000CC6162 /* SingleCarView.swift */; };
+		85750F1C27C5536000CC6162 /* SingleCarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1A27C5536000CC6162 /* SingleCarView.swift */; };
+		85750F2227C560AF00CC6162 /* redbull.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1E27C560AD00CC6162 /* redbull.rcproject */; };
+		85750F2327C560AF00CC6162 /* redbull.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1E27C560AD00CC6162 /* redbull.rcproject */; };
+		85750F2427C560AF00CC6162 /* Mclaren.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1F27C560AF00CC6162 /* Mclaren.rcproject */; };
+		85750F2527C560AF00CC6162 /* Mclaren.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 85750F1F27C560AF00CC6162 /* Mclaren.rcproject */; };
+		85750F2727C560CB00CC6162 /* F1Generic.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 85750F2627C560CB00CC6162 /* F1Generic.rcproject */; };
+		85750F2827C560CB00CC6162 /* F1Generic.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 85750F2627C560CB00CC6162 /* F1Generic.rcproject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,8 +67,11 @@
 		02FDCA4726DF87BF002E6C28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		02FDCA4E26DF8822002E6C28 /* LapDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LapDataModel.swift; sourceTree = "<group>"; };
 		02FDDC6B2719A9E800E3587F /* 1960Final.usdc */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1960Final.usdc; sourceTree = "<group>"; };
-		854BEB8627C12A9600BA8DD3 /* Formula1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Formula1.usdz; sourceTree = "<group>"; };
-		854BEB8927C12CDE00BA8DD3 /* F12022Car.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = F12022Car.rcproject; sourceTree = "<group>"; };
+		85750F1727C549C900CC6162 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		85750F1A27C5536000CC6162 /* SingleCarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCarView.swift; sourceTree = "<group>"; };
+		85750F1E27C560AD00CC6162 /* redbull.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = redbull.rcproject; sourceTree = "<group>"; };
+		85750F1F27C560AF00CC6162 /* Mclaren.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Mclaren.rcproject; sourceTree = "<group>"; };
+		85750F2627C560CB00CC6162 /* F1Generic.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = F1Generic.rcproject; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85750F1627C519DB00CC6162 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85750F1327C518D300CC6162 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +111,7 @@
 				021E2C1026FCBE1500D76B0E /* MainView.swift */,
 				02FDCA4226DF87BD002E6C28 /* LapReplayView.swift */,
 				02B4624226F9E6B900B880EB /* DataBubbleView.swift */,
+				85750F1A27C5536000CC6162 /* SingleCarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,6 +122,7 @@
 				02E7FFF227074CE70029E234 /* AppModel.swift */,
 				02FDCA4E26DF8822002E6C28 /* LapDataModel.swift */,
 				021E2C0D26FCB7CF00D76B0E /* SessionsDataModel.swift */,
+				85750F1727C549C900CC6162 /* CarModel.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -138,6 +153,7 @@
 				02FDCA3F26DF87BD002E6C28 /* F1 mac app */,
 				02F3DBE026F8BF80006953F3 /* F1 iPhone AR app */,
 				02FDCA3E26DF87BD002E6C28 /* Products */,
+				85750F1427C519DB00CC6162 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,12 +189,20 @@
 		02FDDC6A2719A9A800E3587F /* 3D models */ = {
 			isa = PBXGroup;
 			children = (
-				854BEB8627C12A9600BA8DD3 /* Formula1.usdz */,
 				02FDDC6B2719A9E800E3587F /* 1960Final.usdc */,
-				854BEB8927C12CDE00BA8DD3 /* F12022Car.rcproject */,
+				85750F1F27C560AF00CC6162 /* Mclaren.rcproject */,
+				85750F1E27C560AD00CC6162 /* redbull.rcproject */,
+				85750F2627C560CB00CC6162 /* F1Generic.rcproject */,
 				02C73C53271EFB6400EC6504 /* COTA.rcproject */,
 			);
 			path = "3D models";
+			sourceTree = "<group>";
+		};
+		85750F1427C519DB00CC6162 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +221,9 @@
 			dependencies = (
 			);
 			name = "F1 iPhone AR app";
+			packageProductDependencies = (
+				85750F1527C519DB00CC6162 /* FocusEntity */,
+			);
 			productName = "F1 iPhone AR app";
 			productReference = 02F3DBDF26F8BF80006953F3 /* F1 iPhone AR app.app */;
 			productType = "com.apple.product-type.application";
@@ -214,6 +241,9 @@
 			dependencies = (
 			);
 			name = "F1 mac app";
+			packageProductDependencies = (
+				85750F1227C518D300CC6162 /* FocusEntity */,
+			);
 			productName = "F1 mac app";
 			productReference = 02FDCA3D26DF87BD002E6C28 /* F1 mac app.app */;
 			productType = "com.apple.product-type.application";
@@ -245,6 +275,9 @@
 				Base,
 			);
 			mainGroup = 02FDCA3426DF87BD002E6C28;
+			packageReferences = (
+				85750F1127C518D300CC6162 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 02FDCA3E26DF87BD002E6C28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -260,7 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				854BEB8827C12A9600BA8DD3 /* Formula1.usdz in Resources */,
 				02F3DBEB26F8BF82006953F3 /* Preview Assets.xcassets in Resources */,
 				02FDDC6D2719A9E800E3587F /* 1960Final.usdc in Resources */,
 				02F3DBE826F8BF82006953F3 /* Assets.xcassets in Resources */,
@@ -273,7 +305,6 @@
 			files = (
 				02FDCA4826DF87BF002E6C28 /* Preview Assets.xcassets in Resources */,
 				02FDDC6C2719A9E800E3587F /* 1960Final.usdc in Resources */,
-				854BEB8727C12A9600BA8DD3 /* Formula1.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85750F1C27C5536000CC6162 /* SingleCarView.swift in Sources */,
+				85750F2827C560CB00CC6162 /* F1Generic.rcproject in Sources */,
+				85750F2327C560AF00CC6162 /* redbull.rcproject in Sources */,
 				029B0CF526FDC01600A76375 /* MainView.swift in Sources */,
 				02C73C55271EFB6400EC6504 /* COTA.rcproject in Sources */,
 				02F3DBF026F8BFF4006953F3 /* Model.swift in Sources */,
@@ -291,7 +325,8 @@
 				02F3DBE226F8BF80006953F3 /* AppDelegate.swift in Sources */,
 				027BC28526FDF0EC00751081 /* ARViewContainer.swift in Sources */,
 				02B4624426F9E6B900B880EB /* DataBubbleView.swift in Sources */,
-				854BEB8B27C12CDE00BA8DD3 /* F12022Car.rcproject in Sources */,
+				85750F2527C560AF00CC6162 /* Mclaren.rcproject in Sources */,
+				85750F1927C549C900CC6162 /* CarModel.swift in Sources */,
 				02F3DBF126F8BFF9006953F3 /* LapDataModel.swift in Sources */,
 				021E2C0F26FCB7CF00D76B0E /* SessionsDataModel.swift in Sources */,
 				027BC28626FDF15700751081 /* LapReplayView.swift in Sources */,
@@ -302,6 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85750F1B27C5536000CC6162 /* SingleCarView.swift in Sources */,
+				85750F2727C560CB00CC6162 /* F1Generic.rcproject in Sources */,
+				85750F2227C560AF00CC6162 /* redbull.rcproject in Sources */,
 				021E2C1126FCBE1500D76B0E /* MainView.swift in Sources */,
 				02C73C54271EFB6400EC6504 /* COTA.rcproject in Sources */,
 				02A951D826E8D46400529213 /* Model.swift in Sources */,
@@ -309,7 +347,8 @@
 				02E7FFF327074CE70029E234 /* AppModel.swift in Sources */,
 				02B4624326F9E6B900B880EB /* DataBubbleView.swift in Sources */,
 				02FDCA4126DF87BD002E6C28 /* F1_mac_appApp.swift in Sources */,
-				854BEB8A27C12CDE00BA8DD3 /* F12022Car.rcproject in Sources */,
+				85750F2427C560AF00CC6162 /* Mclaren.rcproject in Sources */,
+				85750F1827C549C900CC6162 /* CarModel.swift in Sources */,
 				027BC28326FDF08300751081 /* ARViewContainer.swift in Sources */,
 				02FDCA4F26DF8822002E6C28 /* LapDataModel.swift in Sources */,
 				021E2C0E26FCB7CF00D76B0E /* SessionsDataModel.swift in Sources */,
@@ -601,6 +640,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85750F1127C518D300CC6162 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85750F1227C518D300CC6162 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85750F1127C518D300CC6162 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+		85750F1527C519DB00CC6162 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85750F1127C518D300CC6162 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 02FDCA3526DF87BD002E6C28 /* Project object */;
 }

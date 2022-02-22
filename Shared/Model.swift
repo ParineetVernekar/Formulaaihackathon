@@ -61,6 +61,15 @@ struct Session: Codable {
     let sessionTime: String
     let sessionLength: Int
     
+    var imageName : String{
+        let number = Int.random(in:1..<3)
+        if number == 1{
+            return "redbullcar"
+        } else{
+            return "mclarencar"
+        }
+    }
+    
     var lapsString : String{
         if laps == 1 {
             return "1 lap"

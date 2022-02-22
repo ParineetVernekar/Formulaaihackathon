@@ -11,6 +11,7 @@ struct MainView: View {
     @StateObject var dataModel = SessionsDataModel()
     @StateObject var appModel = AppModel.shared
     
+    
     var body: some View {
         NavigationView {
             if appModel.appState == .loadingSessions {
@@ -20,10 +21,11 @@ struct MainView: View {
                     Spacer()
                 }
             } else {
-//                TabView {
+                TabView {
+                    VStack{
                 HStack{
                     Button { dataModel.loadSessions() }
-                label: { Image(systemName: "arrow.clockwise.circle").font(.system(size: 20)) }
+                label: { Image(systemName: "arrow.clockwise").font(.system(size: 20)) }
                     Spacer()
 
                     Menu("Sort") {
@@ -49,20 +51,36 @@ struct MainView: View {
                 }
                 .padding(.horizontal,20)
                 renderSessionsList()
-                       
-                        .navigationTitle("Drive sessions")
+                    }
+                        .navigationTitle("View Cars")
+                        .tabItem {Label("Improve", systemImage: "hare") }.tag(1)
 
-                
-//                        .tabItem {Label("View races", systemImage: "hare") }.tag(1)
-//
-//                    Text("Tab Content 2").navigationTitle("Cars").tabItem { Label("View Cars", systemImage: "car") }.tag(2)
-//                }
+                    ReplayView(dataModel: dataModel).navigationTitle("Cars").tabItem { Label("Replay", systemImage: "play") }.tag(2)
+                    
+                    CarARView().tabItem { Label("Cars", systemImage: "car") }.tag(2)
+                }
                
             }
     
             renderMessage()
                 .font(.headline)
                 .foregroundColor(.gray)
+        }.onAppear {
+            if #available(iOS 13.0, *) {
+                let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithDefaultBackground()
+                tabBarAppearance.backgroundColor = UIColor(named: "tabColor")
+                UITabBar.appearance().standardAppearance = tabBarAppearance
+
+                let navigationBarAppearance: UINavigationBarAppearance = UINavigationBarAppearance()
+                navigationBarAppearance.configureWithDefaultBackground()
+                navigationBarAppearance.backgroundColor = UIColor(named: "tabColor")
+                UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+                
+                if #available(iOS 15.0, *) {
+                    UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                }
+            }
         }
     }
     
@@ -144,8 +162,110 @@ struct MainView: View {
     }
 }
 
+struct ReplayView : View{
+    @StateObject var dataModel : SessionsDataModel
+    @StateObject var appModel = AppModel.shared
+    var items: [GridItem] {
+      Array(repeating: .init(.adaptive(minimum: 90)), count: 2)
+    }
+
+    var body: some View{
+        ScrollView(.vertical, showsIndicators: false) {
+            HStack{
+                Button { dataModel.loadSessions() }
+            label: { Image(systemName: "arrow.clockwise").font(.system(size: 20)) }
+                Spacer()
+
+                Menu("Sort") {
+                    Button {
+                        dataModel.sessions.sort(by: { $0.sessionLength < $1.sessionLength})
+                    } label: {
+                        Text("By time")
+                    }
+                    
+                    Button {
+                        dataModel.sessions.sort(by: { $0.laps < $1.laps})
+                    } label: {
+                        Text("By laps")
+                    }
+                    
+                    Button {
+                        dataModel.sessions.sort(by: { $0.sessionTime < $1.sessionTime})
+                    } label: {
+                        Text("By date")
+                    }
+                       
+                }
+            }
+            .padding(.horizontal,20)
+            .padding(.bottom, 10)
+            LazyVGrid(columns: items, spacing: 15) {
+                ForEach(dataModel.sessions, id: \.mSessionid) { session in
+                    NavigationLink(destination: LapReplayView(session: session)) {
+                        VStack{
+                        Image("\(session.imageName)")
+                            .resizable()
+                            .aspectRatio(1.65, contentMode: .fit)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                        Text("\(session.sessionTimeMeasurement)")
+                                .font(.headline)
+                        Text("by \(session.driver)")
+                                .font(.subheadline)
+                    }
+                        .foregroundColor(Color.init(uiColor: UIColor(named: "textColor") ?? UIColor.black))
+                    
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.init(uiColor: UIColor(named: "cellColor") ?? UIColor.white))
+                        
+                )
+                    }
+                }
+            }
+            .padding(.horizontal)
+        }.background(Color.init(uiColor: UIColor(named: "backgroundColor") ?? UIColor.white))
+        
+
+    }
+}
+
+struct CarARView : View{
+    let thecars = cars
+    var body: some View{
+        List{
+        ForEach(thecars){ car in
+            NavigationLink(destination: SingleCarView(car: car.imageName, carModel: car)) {
+
+            HStack{
+                VStack(alignment:.leading){
+                    Text("\(car.name)")
+                        .font(.title2)
+                    Text("\(car.maker)")
+                        .font(.callout)
+                    Text(car.year)
+                        .font(.callout)
+
+                }
+                Spacer()
+                Image(car.imageName)
+                    .resizable()
+                    .aspectRatio(1.65, contentMode: .fill)
+                    .frame(width: 150, height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .padding(.vertical)
+            }
+            }
+            
+        }
+//        .background(Color.init(red: 242/255, green: 241/255, blue: 246/255))
+        }.navigationBarTitle(Text("Cars"))
+    }
+}
+
+
 struct Sessions_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        ReplayView(dataModel: SessionsDataModel())
     }
 }
